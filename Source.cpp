@@ -178,8 +178,8 @@ int main(int argc, char** argv)
 		/*Wykryj i dodaj obrazek*/
 		detectFace(frame);
 
-		if (frame.empty()) break; // end of video stream
-			imshow("this is you, smile! :)", frame);
+		if (frame.empty()) break; //sprawdzenie czy popbrano klatke z kamerki
+			imshow("s14222", frame);
 		
 	
 		if ((waitKey(10) % 256) == 27) break;
