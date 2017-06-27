@@ -9,8 +9,8 @@ CascadeClassifier eye_cascade;
 
 ExtraImg * bonus[10];
 int nrExtra = 0;
-string faceCascadeName = "C:\\Users\\Ksiê¿niczka\\Documents\\opencv\\sources\\data\\haarcascades\\haarcascade_frontalface_alt.xml";
-string eyeCascadeName = "C:\\Users\\Ksiê¿niczka\\Documents\\opencv\\sources\\data\\haarcascades\\haarcascade_eye.xml";
+string faceCascadeName = "C:\\haarcascade_frontalface_alt.xml";
+string eyeCascadeName = "C:\\haarcascade_eye.xml";
 
 
 
@@ -100,6 +100,9 @@ void drawHelpHeadLine(vector<Rect> faces, Mat img)
 }
 void overlayImage(const Mat &background, const Mat &small, Point2i location)
 {
+	/*Kod tej funkcji wziêty ze strony:
+	https://stackoverflow.com/questions/35463797/opencv-stitching-how-to-get-better-performance-using-opencv-stitcher-class
+	*/
 	for (int y = std::max(location.y, 0); y < background.rows; ++y) // Przejscie po wierszach 
 	{
 		int fY = y - location.y; 
@@ -131,6 +134,7 @@ void detectFace(Mat img)
 	cvtColor(img, img_gray, CV_BGR2GRAY);                // img tylko odcienie szarosci bez kolorow i Czarnobiale (wykrywaie twarzy)
 	
 	/*Wykrycie twarzy i oczu*/
+	//https://4programmers.net/Forum/C_i_C++/273919-opencv_?p=1269036
 	face_cascade.detectMultiScale(img_gray, faces, 1.1, 3, 0 | CV_HAAR_SCALE_IMAGE, Size(50, 50));
 	eye_cascade.detectMultiScale(img_gray, eye, 1.1, 3, 0 | CV_HAAR_SCALE_IMAGE, Size(50, 50));
 
@@ -145,12 +149,14 @@ int main(int argc, char** argv)
 {
 	
 	/*Zaladowanie obrazku */
-	bonus[0] = new ExtraImg("C:\\Users\\Ksiê¿niczka\\Pictures\\nai\\1.png", HEAD, 0, -75);
-	bonus[1] = new ExtraImg("C:\\Users\\Ksiê¿niczka\\Pictures\\nai\\2.png", HEAD, 40, -60);
-	bonus[2] = new ExtraImg("C:\\Users\\Ksiê¿niczka\\Pictures\\nai\\3.png", HEAD, -30, -60);
-	bonus[3] = new ExtraImg("C:\\Users\\Ksiê¿niczka\\Pictures\\nai\\4.png", HEAD, 0, -70);
-	bonus[4] = new ExtraImg("C:\\Users\\Ksiê¿niczka\\Pictures\\nai\\5.png", EYE, 0, -40);
-
+	bonus[0] = new ExtraImg("C:\\1.png", HEAD, 0, 130);
+	bonus[1] = new ExtraImg("C:\\2.png", HEAD, 40, -60);
+	bonus[2] = new ExtraImg("C:\\3.png", HEAD, -30, -60);
+	bonus[3] = new ExtraImg("C:\\4.png", HEAD, 0, -70);
+	bonus[4] = new ExtraImg("C:\\5.png", EYE, 0, -40);
+//	bonus[5] = new ExtraImg("C:\\6.png", EYE, 0, -40);
+	bonus[5] = new ExtraImg("C:\\6.png", HEAD, 0, -75);
+	//bonus[0] = new ExtraImg("C:\\1.png", HEAD, 0, -75);
 	string window_name = "Hello Face !";
 	VideoCapture cap;
 	
@@ -172,6 +178,7 @@ int main(int argc, char** argv)
 	}
 	for (;;)
 	{
+		//wzorowane siê na: http://answers.opencv.org/question/1/how-can-i-get-frames-from-my-webcam/
 		Mat frame;
 		/*Czytanie z kamerki*/
 		cap >> frame;
@@ -188,7 +195,7 @@ int main(int argc, char** argv)
 			cout << "[Info] Zmieniono obrazek"<< endl;
 
 			nrExtra++;
-			nrExtra %= 5;
+			nrExtra %= 6;
 		}
 		
 	}
