@@ -1,0 +1,11 @@
+﻿  Source.cpp
+c:\users\księżniczka\documents\visual studio 2015\projects\opencv\opencv\source.cpp(45): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\księżniczka\documents\visual studio 2015\projects\opencv\opencv\source.cpp(49): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\księżniczka\documents\visual studio 2015\projects\opencv\opencv\source.cpp(76): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\księżniczka\documents\visual studio 2015\projects\opencv\opencv\source.cpp(118): warning C4244: '=': conversion from 'double' to 'uchar', possible loss of data
+  Generating Code...
+  Compiling...
+  ExtraImg.cpp
+  Generating Code...
+  OPENCV.vcxproj -> C:\Users\Księżniczka\Documents\Visual Studio 2015\Projects\OPENCV\x64\Debug\OPENCV.exe
+  OPENCV.vcxproj -> C:\Users\Księżniczka\Documents\Visual Studio 2015\Projects\OPENCV\x64\Debug\OPENCV.pdb (Full PDB)
